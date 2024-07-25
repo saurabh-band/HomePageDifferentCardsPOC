@@ -89,4 +89,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controls\" />
+	  <Folder Include="Platforms\Android\Handlers\" />
+	  <Folder Include="Platforms\iOS\Handlers\" />
+	</ItemGroup>
+
 </Project>

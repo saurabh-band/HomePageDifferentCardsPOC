@@ -14,14 +14,13 @@ namespace HomePageDifferentCardsPOC
 {
 	public class CustomButtonHandler : ViewHandler<CustomButton, ContentViewGroup>
 	{
-		public CustomButtonHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null) : base(mapper, commandMapper)
-		{
-		}
+        public CustomButtonHandler() : base(HybridWebViewMapper)
+        {
+        }
 
-		//public CustomButtonHandler(): base()
-		//{ }	
+        public static IPropertyMapper<IButton, IButtonHandler> HybridWebViewMapper = new PropertyMapper<IButton, IButtonHandler>(CustomButtonHandler.ViewMapper);
 
-		protected override ContentViewGroup CreatePlatformView()
+        protected override ContentViewGroup CreatePlatformView()
 		{
 			var contentViewGroup = new ContentViewGroup(Context);
 			return contentViewGroup;

@@ -26,10 +26,10 @@
     <Grid ColumnDefinitions="*,Auto">
         <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" Margin="20,20,0,20" BackgroundColor="#F6F7F8">
             <Border.Shadow>
-                <Shadow Brush="#570099"
-                        Offset="0,15"
-                        Radius="40" 
-                        Opacity="0.5" />
+                <Shadow Brush="#E044E7"
+                        Offset="5,15"
+                        Radius="5" 
+                        Opacity="0.2" />
             </Border.Shadow>
            
             <Border.GestureRecognizers>
@@ -64,7 +64,7 @@
         </Border>
         <Border Grid.Column="1" StrokeShape="RoundRectangle 0,16,0,16" HeightRequest="80" WidthRequest="80" Margin="1,20,20,20" BackgroundColor="#E044E7">
             <Border.Background>
-                <LinearGradientBrush EndPoint="1,1">
+                <LinearGradientBrush EndPoint="0,0">
                     <GradientStop Color="#8900F2"
                                       Offset="0"/>
                     <GradientStop Color="#E044E7"
@@ -73,10 +73,10 @@
             </Border.Background>
 
             <Border.Shadow>
-                <Shadow Brush="#570099"
-                        Offset="0,15"
-                        Radius="40"
-                        Opacity="0.6"/>
+                <Shadow Brush="#E044E7"
+                        Offset="5,15"
+                        Radius="5" 
+                        Opacity="0.3"/>
             </Border.Shadow>
             
             <Border.GestureRecognizers>
