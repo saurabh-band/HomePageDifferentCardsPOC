@@ -5,13 +5,6 @@
              x:Class="HomePageDifferentCardsPOC.Views.CompanyPage"
              Title="CompanyPage">
     <StackLayout>
-        <local:CustomButton
-           ImageSource="your_image.png"
-           Title="Your Title"
-           Subtitle="Your Subtitle"
-           Command="{Binding YourCommand}"
-           BackgroundColor="LightGray"
-           CornerRadius="15"
-           HasShadow="True" />
+        <Label Text=" Hi, Your are on Company Page" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
     </StackLayout>
 </ContentPage>

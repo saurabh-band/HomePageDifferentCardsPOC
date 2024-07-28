@@ -14,13 +14,7 @@ namespace HomePageDifferentCardsPOC
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                })
-				 .ConfigureMauiHandlers(h =>
-				 {
-#if ANDROID || IOS
-					 h.AddHandler<CustomButton, CustomButtonHandler>();
-#endif
-				 });
+                });
 
 #if DEBUG
 			builder.Logging.AddDebug();

@@ -6,7 +6,7 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <Style TargetType="Border">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
@@ -21,7 +21,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <Grid ColumnDefinitions="*,Auto" Margin="16,6,16,6">
         <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" WidthRequest="279" BackgroundColor="#F6F7F8">
@@ -33,7 +33,7 @@
             </Border.Shadow>
            
             <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
             </Border.GestureRecognizers>
            
             <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
@@ -80,7 +80,7 @@
             </Border.Shadow>
             
             <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
             </Border.GestureRecognizers>
 
                 <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="plus.svg" HeightRequest="21.5" WidthRequest="21.5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>

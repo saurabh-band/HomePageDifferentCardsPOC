@@ -56,6 +56,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Controls\**" />
+	  <AndroidResource Remove="Platforms\Android\Handlers\**" />
+	  <AndroidResource Remove="Platforms\iOS\Handlers\**" />
+	  <Compile Remove="Controls\**" />
+	  <Compile Remove="Platforms\Android\Handlers\**" />
+	  <Compile Remove="Platforms\iOS\Handlers\**" />
+	  <EmbeddedResource Remove="Controls\**" />
+	  <EmbeddedResource Remove="Platforms\Android\Handlers\**" />
+	  <EmbeddedResource Remove="Platforms\iOS\Handlers\**" />
+	  <MauiCss Remove="Controls\**" />
+	  <MauiCss Remove="Platforms\Android\Handlers\**" />
+	  <MauiCss Remove="Platforms\iOS\Handlers\**" />
+	  <MauiXaml Remove="Controls\**" />
+	  <MauiXaml Remove="Platforms\Android\Handlers\**" />
+	  <MauiXaml Remove="Platforms\iOS\Handlers\**" />
+	  <None Remove="Controls\**" />
+	  <None Remove="Platforms\Android\Handlers\**" />
+	  <None Remove="Platforms\iOS\Handlers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\Company.png" />
 	  <None Remove="Resources\Images\expenses.svg" />
 	  <None Remove="Resources\Images\leave.svg" />
@@ -87,12 +108,6 @@
 	  <MauiXaml Update="Views\NotificationsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controls\" />
-	  <Folder Include="Platforms\Android\Handlers\" />
-	  <Folder Include="Platforms\iOS\Handlers\" />
 	</ItemGroup>
 
 </Project>
