@@ -10,16 +10,18 @@
     BackgroundColor="White">
     <TabBar Shell.TabBarForegroundColor="DeepPink" Shell.UnselectedColor="Gray">
         <Tab>
-            <ShellContent Icon="home.png" Title="Home" ContentTemplate="{DataTemplate views:HomePage}"/>
+            <ShellContent Icon="expenses" Title="Home" ContentTemplate="{DataTemplate views:HomePage}"/>
         </Tab>
+        
         <Tab>
             <ShellContent Icon="company.png" Title="Company" ContentTemplate="{DataTemplate views:CompanyPage}"/>
         </Tab>
         <Tab>
             <ShellContent Icon="notification_on.png" Title="Notification" ContentTemplate="{DataTemplate views:NotificationsPage}"/>
         </Tab>
+        
         <Tab>
-            <ShellContent Title="My Details" ContentTemplate="{DataTemplate views:MyDetailsPage}"/>
+            <ShellContent Icon="notification_on" Title="My Details" ContentTemplate="{DataTemplate views:MyDetailsPage}"/>
         </Tab>
     </TabBar>
 </Shell>

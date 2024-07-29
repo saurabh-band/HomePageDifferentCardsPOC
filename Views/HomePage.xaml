@@ -2,91 +2,442 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HomePageDifferentCardsPOC.Views.HomePage"
+             xmlns:local="clr-namespace:HomePageDifferentCardsPOC.ViewModels"
              Title="HomePage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <local:HomePageViewModel/>
+    </ContentPage.BindingContext>
 
-    <!--<ContentPage.Resources>
-        <Style TargetType="Border">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="Red" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>-->
+    <Grid RowDefinitions="Auto, Auto, Auto,*">
+        <Grid Grid.Row="0" BackgroundColor="#3D3D3A" HorizontalOptions="FillAndExpand" HeightRequest="54">
+            <Image Source="staffologylogo"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="16,10,0,0" ColumnDefinitions="Auto,Auto,Auto">
+            <Label Grid.Column="0" Text="Hi, " TextColor="#570099" FontSize="32" FontAttributes="Bold" />
+            <Label Grid.Column="1" Text="Rose" TextColor="#570099" FontSize="32" FontAttributes="Bold"/>
+            <Label Grid.Column="2" Text="!" TextColor="#570099" FontSize="32" FontAttributes="Bold"/>
+        </Grid>
+<!--Line Manager Pending Approvals-->
+        <Grid Grid.Row="2" Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" IsVisible="True" >
+            <Border StrokeShape="RoundRectangle 16,16,16,16" HeightRequest="80" StrokeThickness="0"  WidthRequest="361" >
+                <Border.Shadow>
+                    <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                </Border.Shadow>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                        <GradientStop Color="#F89B29"
+                      Offset="0"/>
+                        <GradientStop Color="#FF0F7B"
+                      Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-    <Grid ColumnDefinitions="*,Auto" Margin="16,6,16,6">
-        <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" WidthRequest="279" BackgroundColor="#F6F7F8">
-            <Border.Shadow>
-                <Shadow Brush="#570099"
-                        Offset="0,15"
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                </Border.GestureRecognizers>
+
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="tapin" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                    <Label Grid.Column="1" 
+                               Text="0 Pending Approvals" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <ScrollView Grid.Row="3" Margin="16,0,16,0" Orientation="Vertical">
+            <StackLayout>
+                <Label Grid.Column="1" Text="Personal" TextColor="#666E76" FontSize="18" FontAttributes="Bold" Margin="0,8"/>
+                <!--Leave-->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" StrokeThickness="0"  WidthRequest="279" BackgroundColor="#F6F7F8" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                        Offset="{OnPlatform Android='0,15', iOS='0,8'}"
                         Radius="5" 
                         Opacity="0.15" />
-            </Border.Shadow>
-           
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-            </Border.GestureRecognizers>
-           
-            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
-                <Image Grid.Row="0" 
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                            <Image Grid.Row="0" 
                        Grid.Column="0" 
                        Grid.RowSpan="2"
-                       Source="leave.svg" 
+                       Source="leave" 
                        Aspect="AspectFit"
                        HeightRequest="32"
                        WidthRequest="32"
                        Margin="24,24,16,24" 
                        HorizontalOptions="FillAndExpand" 
                        VerticalOptions="FillAndExpand"/>
-                <Label Grid.Row="0" 
+                            <Label Grid.Row="0" 
                        Grid.Column="1" 
                        Text="Leave" 
                        FontSize="18" 
                        FontAttributes="Bold" 
                        TextColor="#570099" 
                        VerticalOptions="EndAndExpand"/>
-                <Label Grid.Row="1" 
+                            <Label Grid.Row="1" 
                        Grid.Column="1" 
                        Text="12.5 Days Remaining" 
                        FontSize="14"
                        TextColor="#666E76"
                        VerticalOptions="StartAndExpand"/>
-            </Grid>
-        </Border>
-        <Border Grid.Column="1" StrokeShape="RoundRectangle 0,16,0,16"  HeightRequest="80" WidthRequest="80">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                    <GradientStop Color="#e7ccfc"
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 0,16,0,16"  HeightRequest="80" StrokeThickness="0" WidthRequest="80">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                <GradientStop Color="#e7ccfc"
                                       Offset="0"/>
-                    <GradientStop Color="#f9dafa"
+                                <GradientStop Color="#f9dafa"
                                       Offset="0.6"/>
-                </LinearGradientBrush>
-            </Border.Background>
+                            </LinearGradientBrush>
+                        </Border.Background>
 
-            <Border.Shadow>
-                <Shadow Brush="#570099"
-                        Offset="0,15"
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                        Offset="{OnPlatform Android='0,15', iOS='0,8'}"
                         Radius="5" 
                         Opacity="0.15"/>
-            </Border.Shadow>
-            
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
-            </Border.GestureRecognizers>
+                        </Border.Shadow>
 
-                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="plus.svg" HeightRequest="21.5" WidthRequest="21.5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-        </Border>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
+                        </Border.GestureRecognizers>
 
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="plus" HeightRequest="21.5" WidthRequest="21.5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Border>
+
+                </Grid>
+                <!--Self-Certify Sick-->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" StrokeThickness="0"  WidthRequest="279" BackgroundColor="#F6F7F8" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                            <Image Grid.Row="0" 
+                               Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="selfcertifysick" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Row="0" 
+                               Grid.Column="1" 
+                               Text="Self-Certify Sick" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="EndAndExpand"/>
+                            <Label Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="3 days taken" 
+                               FontSize="14"
+                               TextColor="#666E76"
+                               VerticalOptions="StartAndExpand"/>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" 
+                        StrokeShape="RoundRectangle 0,16,0,16"  
+                        HeightRequest="80" 
+                        StrokeThickness="0" 
+                        WidthRequest="80">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                <GradientStop Color="#e7ccfc"
+                                          Offset="0"/>
+                                <GradientStop Color="#f9dafa"
+                                          Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15"/>
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
+                        </Border.GestureRecognizers>
+
+                        <Image Grid.Row="0" 
+                           Grid.Column="0" 
+                           Grid.RowSpan="2" 
+                           Source="plus" 
+                           HeightRequest="21.5" 
+                           WidthRequest="21.5" 
+                           HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand"/>
+                    </Border>
+                </Grid>
+                <!--Payslips-->
+                <Grid Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border StrokeShape="RoundRectangle 16,16,16,16" HeightRequest="80" StrokeThickness="0"  WidthRequest="361" BackgroundColor="#F6F7F8" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="payslips" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Column="1" 
+                               Text="Payslips" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="CenterAndExpand"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <!--Tap In-->
+                <Grid Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border StrokeShape="RoundRectangle 16,16,16,16" HeightRequest="80" StrokeThickness="0"  WidthRequest="361" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                        </Border.Shadow>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                <GradientStop Color="#AEFB2A"
+                      Offset="0"/>
+                                <GradientStop Color="#57EBDE"
+                      Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="tapin" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Column="1" 
+                               Text="Tap In" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="CenterAndExpand"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Label Grid.Column="1" Text="Ready to Submit" TextColor="#666E76" FontSize="18" FontAttributes="Bold" Margin="0,8"/>
+                <!--Hours/Time-->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" StrokeThickness="0"  WidthRequest="279" BackgroundColor="#F6F7F8" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                            <Image Grid.Row="0" 
+                               Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="time" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Row="0" 
+                               Grid.Column="1" 
+                               Text="36 hours" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="EndAndExpand"/>
+                            <Label Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="Time recorded" 
+                               FontSize="14"
+                               TextColor="#666E76"
+                               VerticalOptions="StartAndExpand"/>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" 
+                        StrokeShape="RoundRectangle 0,16,0,16"  
+                        HeightRequest="80" 
+                        StrokeThickness="0" 
+                        WidthRequest="80">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                <GradientStop Color="#e7ccfc"
+                                          Offset="0"/>
+                                <GradientStop Color="#f9dafa"
+                                          Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15"/>
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
+                        </Border.GestureRecognizers>
+
+                        <Image Grid.Row="0" 
+                           Grid.Column="0" 
+                           Grid.RowSpan="2" 
+                           Source="plus" 
+                           HeightRequest="21.5" 
+                           WidthRequest="21.5" 
+                           HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand"/>
+                    </Border>
+                </Grid>
+                <!--Expenses recorded-->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,6,0,6" HorizontalOptions="CenterAndExpand" >
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 16,0,16,0" HeightRequest="80" StrokeThickness="0"  WidthRequest="279" BackgroundColor="#F6F7F8" >
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                            <Image Grid.Row="0" 
+                               Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Source="expenses" 
+                               Aspect="AspectFit"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Margin="24,24,16,24" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Row="0" 
+                               Grid.Column="1" 
+                               Text="£246.39" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#570099" 
+                               VerticalOptions="EndAndExpand"/>
+                            <Label Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="Expenses recorded" 
+                               FontSize="14"
+                               TextColor="#666E76"
+                               VerticalOptions="StartAndExpand"/>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" 
+                        StrokeShape="RoundRectangle 0,16,0,16"  
+                        HeightRequest="80" 
+                        StrokeThickness="0" 
+                        WidthRequest="80">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                <GradientStop Color="#e7ccfc"
+                                          Offset="0"/>
+                                <GradientStop Color="#f9dafa"
+                                          Offset="0.6"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.Shadow>
+                            <Shadow Brush="#570099"
+                                Offset="{OnPlatform Android='0,15', iOS='0,8'}"
+                                Radius="5" 
+                                Opacity="0.15"/>
+                        </Border.Shadow>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Plus" />
+                        </Border.GestureRecognizers>
+
+                        <Image Grid.Row="0" 
+                           Grid.Column="0" 
+                           Grid.RowSpan="2" 
+                           Source="plus" 
+                           HeightRequest="21.5" 
+                           WidthRequest="21.5" 
+                           HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand"/>
+                    </Border>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </Grid>
-
-
 </ContentPage>

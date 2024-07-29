@@ -15,17 +15,14 @@ public partial class HomePage : ContentPage
 
 		//Tap-In
 		borders.Shadow = new Shadow { Brush = Colors.Transparent };
-		borders.BackgroundColor = Colors.LightGray;
+		borders.BackgroundColor = Color.FromHex("#EDEFF2");
 
 		await Task.Delay(150);
 
 		//Tap-Out
-		borders.Shadow = new Shadow { Brush = Color.FromHex("#570099"), Offset = new Point(0, 15), Opacity = (float)0.15 };
+		borders.Shadow = new Shadow { Brush = Color.FromHex("#570099"), Opacity = (float)0.15 };
+		borders.Shadow.Offset = DeviceInfo.Platform == DevicePlatform.Android? new Point(0,15):new Point(0,8);
 		borders.BackgroundColor = Color.FromHex("#F6F7F8");
-
-		//Write Your bussiness logic below this
-
-
 
 	}
 
@@ -37,8 +34,8 @@ public partial class HomePage : ContentPage
 		borders.Background = new LinearGradientBrush(
 			new GradientStopCollection
 			{
-				new GradientStop(Color.FromHex("#570099"),0),
-				new GradientStop(Color.FromHex("#e7ccfc"),(float)0.6)
+				new GradientStop(Color.FromHex("#DCB3FB"),0),
+				new GradientStop(Color.FromHex("#FFBBFF"),(float)0.6)
 			},
 			new Point(1, 0),
 			new Point(0, 1)
@@ -47,7 +44,9 @@ public partial class HomePage : ContentPage
 		await Task.Delay(150);
 
 		//Tap Out
-		borders.Shadow = new Shadow { Brush = Color.FromHex("#570099") , Offset = new Point(0,15), Opacity = (float)0.15 };
+		borders.Shadow = new Shadow { Brush = Color.FromHex("#570099"), Opacity = (float)0.15 };
+		borders.Shadow.Offset = DeviceInfo.Platform == DevicePlatform.Android ? new Point(0, 15) : new Point(0, 8);
+
 		borders.Background = new LinearGradientBrush(
 			new GradientStopCollection
 			{
@@ -57,9 +56,6 @@ public partial class HomePage : ContentPage
 			new Point(1, 0),
 			new Point(0, 1)
 		);
-
-		//Write Your Buissiness logic below this
-
 
 	}
 
